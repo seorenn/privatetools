@@ -5,7 +5,8 @@
 # Author: Seorenn
 #
 # This script gathering subtitle files in subdirectories (only 1 depth)
-# And Delete black directory
+#   to current directory.
+# And Delete blank directory.
 #
 
 $pwd = Dir.pwd
