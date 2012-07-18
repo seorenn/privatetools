@@ -10,7 +10,6 @@
 #
 
 $pwd = Dir.pwd
-$targets = [ "smi", "SMI", "smil", "SMIL" ]
 
 require "fileutils"
 
@@ -28,12 +27,20 @@ def removeblankdir(dir)
     end
 end
 
+def smi?(name)
+    r = /smil?/i
+    if name.match(r) then
+        return true
+    else
+        return false
+    end
+end
+
 def gatherfiles(dir)
     files = deletetrash Dir.entries dir
     files.each do |file|
         extnames = file.split "."
-        next if extnames.length < 2 || 
-                $targets.include?(extnames[-1]) == false
+        next if extnames.length < 2 || smi?(extnames[-1]) == false
         
         srcfile = File.join dir, file
         puts "Moving file #{file} to current directory..."
