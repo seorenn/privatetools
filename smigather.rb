@@ -1,7 +1,11 @@
 #!/usr/bin/env ruby
+#
 # smigather.rb
+# Author: Seorenn
+#
 # This script gathering subtitle files in subdirectories (only 1 depth)
 # And Delete black directory
+#
 
 $pwd = Dir.pwd
 $targets = [ "smi", "SMI", "smil", "SMIL" ]
