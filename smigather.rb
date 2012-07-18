@@ -28,7 +28,7 @@ def removeblankdir(dir)
 end
 
 def smi?(name)
-    r = /smil?/i
+    r = /.*\.smil?/i
     if name.match(r) then
         return true
     else
@@ -39,8 +39,7 @@ end
 def gatherfiles(dir)
     files = deletetrash Dir.entries dir
     files.each do |file|
-        extnames = file.split "."
-        next if extnames.length < 2 || smi?(extnames[-1]) == false
+        next if smi?(file) == false
         
         srcfile = File.join dir, file
         puts "Moving file #{file} to current directory..."
