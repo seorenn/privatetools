@@ -17,7 +17,7 @@ def convertname(name)
     r = /\[.*-Raws\]\s+(.*)\s+\(.*\)(\..+)/i
     match = name.match r
     if match
-        return $1.strip + $2.strip
+        return $1.strip + $2.strip.downcase
     end
 end
 
