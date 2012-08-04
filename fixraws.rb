@@ -14,10 +14,10 @@
 require 'fileutils'
 
 def convertname(name)
-    r = /\[.*-Raws\]\s+(.*)\s+\(.*\)(\..+)/i
+    r = /\[.*-(Raws|rip)\]\s+(.*)\s+\(.*\)(\..+)/i
     match = name.match r
     if match
-        return $1.strip + $2.strip.downcase
+        return $2.strip + $3.strip.downcase
     end
 end
 
