@@ -21,6 +21,17 @@ def convertname(name)
     end
 end
 
+# rule 2: '#nn' -> '- nn'
+def convertname2(name)
+    r = /(.*)#([0-9]+)(.*)/i
+    match = name.match r
+    if match
+        return name.gsub(r, '\1- \2\3')
+    else
+        return name
+    end
+end
+
 # Remove excepted names from array
 def clearext(a)
     a.reject! { |item| item =~ /.*\.part/i }
@@ -35,6 +46,7 @@ def discover
     files.each do |filename|
         newname = convertname filename
         next unless newname
+        newname = convertname2(newname)
         puts "#{filename}\n\t-> #{newname}"
         FileUtils.mv filename, newname
     end
